@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- iOS PWA 설정 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="성모모바일">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#38761d">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512x512.png">
+    
+    <!-- Apple Touch Icon (iOS 홈화면 아이콘) -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>성모 모바일</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #38761d 0%, #4a9928 50%, #5cb832 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .loader-container {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 24px;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .manual-link {
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .manual-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <img src="apple-touch-icon.png" alt="성모 모바일" class="icon">
+        <h1 class="title">성모 모바일</h1>
+        <p class="subtitle">성모자애복지관 모바일 워크스페이스</p>
+        <div class="loader"></div>
+        <p class="loading-text">잠시만 기다려주세요...</p>
+        <a href="https://script.google.com/a/macros/smwelfare.or.kr/s/AKfycbwSomething/exec" class="manual-link" id="manualLink">
+            직접 이동하기 →
+        </a>
+    </div>
+
+    <script>
+        // 실제 Apps Script 웹앱 URL로 변경하세요
+        var APPS_SCRIPT_URL = "https://script.google.com/a/macros/smwelfare.or.kr/s/여기에_배포ID_입력/exec";
+        
+        // 링크 업데이트
+        document.getElementById('manualLink').href = APPS_SCRIPT_URL;
+        
+        // 1.5초 후 자동 리다이렉트
+        setTimeout(function() {
+            window.location.href = APPS_SCRIPT_URL;
+        }, 1500);
+    </script>
+</body>
+</html>
